@@ -18,6 +18,12 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @GetMapping("/foods")
+    public ResponseEntity<List<Food>> getMenu() {
+        return ResponseEntity.ok(this.orderService.getMenu());
+    }
+
+
     @GetMapping("/{orderId}")
     public ResponseEntity<Order> getOrder(@PathVariable Long orderId) {
 
