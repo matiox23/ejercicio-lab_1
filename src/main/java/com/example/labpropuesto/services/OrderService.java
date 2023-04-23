@@ -2,13 +2,11 @@ package com.example.labpropuesto.services;
 
 import com.example.labpropuesto.models.Food;
 import com.example.labpropuesto.models.Order;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
 public class OrderService {
     private List<Order> orders = new ArrayList<>();
 
@@ -44,15 +42,4 @@ public class OrderService {
         return order;
     }
 
-
-
-
-
-
-
-
-
-
-
 }
-
