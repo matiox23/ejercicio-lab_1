@@ -13,6 +13,11 @@ import java.util.stream.Collectors;
 public class OrderService {
 
         private List<Order> orders;
+        private List<Food> foods;
+
+        public void addFood(Food food){
+        foods.add(food);
+        }
 
         public OrderService(List<Order> orders) {
         this.orders = orders;
@@ -22,23 +27,18 @@ public class OrderService {
         public List<Food> getMenu() {
             List<Food> menu = new ArrayList<>();
             menu.add(new Food("Pizza Americana", "Deliciosa pizza de tomate y queso", 10.0));
-            menu.add(new Food("Pizza Hawaina", "Hamburguesa con queso, lechuga y tomate", 8.0));
-            menu.add(new Food("Ensalada César", "Ensalada con pollo, lechuga y aderezo césar", 7.0));
+            menu.add(new Food("Pizza Hawaina", "Deliciosa pizza de toamte, jamón y piña", 13.0));
+            menu.add(new Food("Ensalada César", "Ensalada con pollo, lechuga y aderezo césar", 15.0));
             return menu;
         }
 
-    public Order createOrder(String customerName, String customerEmail, List<Long> itemIds) {
-        List<Food> items = getMenu().stream()
-                .filter(food -> itemIds.contains(food.getDescription()))
-                .collect(Collectors.toList());
-        Order order = new Order(customerName, customerEmail, items);
+        public Order createOrder(String customerName, String customerEmail, List<Food> food) {
+        Order order = new Order(customerName, customerEmail, food);
         orders.add(order);
         return order;
-    }
+        }
 
-
-
-    public List<Order> getAllOrders() {
+        public List<Order> getAllOrders() {
             return orders;
         }
 
@@ -56,4 +56,10 @@ public class OrderService {
             }
             return order;
         }
+
+        public void updateOrderStatus(Order order, String status) {
+        order.setStatus(status);
+        }
+
+
 }
