@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OrderService {
+
     private List<Order> orders = new ArrayList<>();
 
     public List<Food> getMenu() {
@@ -41,5 +42,4 @@ public class OrderService {
         }
         return order;
     }
-
 }
